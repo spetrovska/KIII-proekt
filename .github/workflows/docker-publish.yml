@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Docker Publish
 
 on:
   push:
@@ -14,15 +14,18 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2
 
     - name: Log in to DockerHub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      run: |
-        docker build -t spetrovska/KIII-proekt .
-        docker push spetrovska/KIII-proekt
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: spetrovska/KIII-proekt:latest
+
