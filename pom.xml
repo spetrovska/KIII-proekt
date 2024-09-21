@@ -15,7 +15,7 @@
     <description>Example Exam</description>
 
     <properties>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
@@ -91,6 +91,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>mk.ukim.finki.wp.kol2023.g1.ExampleApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
